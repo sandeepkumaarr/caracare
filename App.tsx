@@ -8,6 +8,8 @@ import theme from './src/themes/default';
 // import {NativeModules} from 'react-native';
 // NativeModules.DevSettings.setIsDebuggingRemotely(false);
 
+const STORYBOOK_START = true;
+
 const App = () => {
   return (
     <>
@@ -19,4 +21,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default STORYBOOK_START ? require('./storybook').default : App;

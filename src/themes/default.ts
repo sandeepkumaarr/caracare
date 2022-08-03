@@ -62,6 +62,7 @@ const theme = createTheme({
 
   buttonVariants: {
     defaults: {},
+    default: {},
   },
   textVariants: {
     default: {},
