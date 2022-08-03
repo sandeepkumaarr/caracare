@@ -6,13 +6,11 @@ import {
 } from 'react-native-size-matters';
 
 const palette = {
-  cyanBlue: '#186eb7',
-  cyanMedium: '#4A97CA',
-  cyanLight: 'rgba(24,110,183,0.5)',
-  WhiteSmoke: '#e5e5e5',
-  grey: '#303030',
-  limegreen: '#9deec4',
-  meatBrown: 'rgba(232, 168, 69,0.5)',
+  grayishBlue: '#D8DDE9',
+  grayishOrange: '#FCEECA',
+  grayishPink: '#F9CEDE',
+  softBlue: '#8DBBF0',
+  paleBlue: '#FDFDFF',
 
   black: '#0B0B0B',
   white: '#F0F2F3',
@@ -20,15 +18,8 @@ const palette = {
 
 const theme = createTheme({
   colors: {
-    primary: palette.cyanBlue,
-    secondary: palette.limegreen,
-    buttonText: palette.white,
-    buttonText_off: palette.black,
-    headerText: palette.black,
-    authBackground: palette.WhiteSmoke,
-    buttonBackground: palette.grey,
-    bottomTabHighlight: palette.cyanLight,
-    bottomTabBackground: palette.cyanMedium,
+    primary: palette.paleBlue,
+    secondary: palette.softBlue,
   },
   spacing: {
     nil: 0,
