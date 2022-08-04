@@ -1,3 +1,5 @@
+import {Dimensions} from 'react-native';
+
 import {createTheme} from '@shopify/restyle';
 import {
   moderateScale,
@@ -15,11 +17,13 @@ const palette = {
   black: '#0B0B0B',
   white: '#F0F2F3',
 };
+const windowWidth = Dimensions.get('window').width;
 
 const theme = createTheme({
   colors: {
     primary: palette.paleBlue,
     secondary: palette.softBlue,
+    bottomtabBackground: palette.grayishBlue,
   },
   spacing: {
     nil: 0,
@@ -56,6 +60,25 @@ const theme = createTheme({
     default: {},
   },
   textVariants: {
+    default: {},
+  },
+  bottomTabVariants: {
+    defaults: {
+      backgroundColor: 'bottomtabBackground',
+      paddingVertical: 3,
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      alignItems: 'center',
+    },
+    default: {},
+  },
+  searchBarVariants: {
+    defaults: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'row',
+      width: windowWidth,
+    },
     default: {},
   },
 });
