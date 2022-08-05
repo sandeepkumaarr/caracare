@@ -24,6 +24,7 @@ const theme = createTheme({
     primary: palette.paleBlue,
     secondary: palette.softBlue,
     bottomtabBackground: palette.grayishBlue,
+    buttonText: palette.black,
   },
   spacing: {
     nil: 0,
@@ -61,6 +62,20 @@ const theme = createTheme({
   },
   textVariants: {
     default: {},
+    buttonText: {
+      fontSize: moderateScale(16),
+      color: 'buttonText',
+      fontWeight: '700',
+      fontFamily: 'SFProText-Regular',
+      textAlign: 'center',
+    },
+    dropDownText: {
+      flexWrap: 'wrap',
+      fontSize: moderateScale(14),
+      color: 'buttonText',
+      fontWeight: '500',
+      fontFamily: 'SFProText-Regular',
+    },
   },
   bottomTabVariants: {
     defaults: {
@@ -79,6 +94,11 @@ const theme = createTheme({
       flexDirection: 'row',
       width: windowWidth,
     },
+    default: {},
+  },
+
+  dropDownVariants: {
+    defaults: {},
     default: {},
   },
 });

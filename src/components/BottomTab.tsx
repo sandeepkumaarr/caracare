@@ -18,8 +18,7 @@ const BottomTabContainer = createRestyleComponent<
 
 const restyleFunctions = [bottomTabVariant as any, backgroundColor];
 
-type BottomTabProps = VariantProps<Theme, 'textVariants', 'textVariants'> &
-  AllProps<Theme> &
+type BottomTabProps = AllProps<Theme> &
   VariantProps<Theme, 'bottomTabVariants'> & {
     children: React.ReactNode;
   };

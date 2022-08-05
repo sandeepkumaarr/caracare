@@ -28,8 +28,7 @@ const SearchBarContainer = createRestyleComponent<
 
 const restyleFunctions = [searchBarVariant as any, backgroundColor];
 
-type searchBarProps = VariantProps<Theme, 'textVariants', 'textVariants'> &
-  AllProps<Theme> &
+type searchBarProps = AllProps<Theme> &
   VariantProps<Theme, 'searchBarVariants'> & {
     clicked: boolean;
     setClicked: React.Dispatch<React.SetStateAction<boolean>>;
