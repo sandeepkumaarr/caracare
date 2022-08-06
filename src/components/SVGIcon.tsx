@@ -10,6 +10,7 @@ import Grid from '../assets/images/svg/grid.svg';
 import Dot_Green from '../assets/images/svg/dot_green.svg';
 import Dot_Red from '../assets/images/svg/dot_red.svg';
 import Dot_Unknown from '../assets/images/svg/dot_unknown.svg';
+import Back from '../assets/images/svg/back.svg';
 
 export declare type SVGTypes =
   | 'home'
@@ -22,7 +23,8 @@ export declare type SVGTypes =
   | 'grid'
   | 'dot_green'
   | 'dot_red'
-  | 'dot_unknown';
+  | 'dot_unknown'
+  | 'back';
 
 type SVGprops = {
   type: SVGTypes;
@@ -82,6 +84,10 @@ export const SVGIcon: React.FC<SVGprops> = ({type, height, width, style}) => {
 
     case 'dot_unknown':
       Component = Dot_Unknown;
+      break;
+
+    case 'back':
+      Component = Back;
       break;
   }
 

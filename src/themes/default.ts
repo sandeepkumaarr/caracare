@@ -31,6 +31,7 @@ const theme = createTheme({
     favourite: palette.lightRed,
     cardBackground: palette.grayishOrangeOpacity,
     favouriteBackground: palette.halfBlack,
+    episodeBackground: palette.grayishOrange,
   },
   spacing: {
     nil: 0,
@@ -88,6 +89,27 @@ const theme = createTheme({
       fontWeight: '400',
       fontFamily: 'SFProText-Regular',
     },
+    charaterDetailHeader: {
+      fontSize: moderateScale(30),
+      color: 'bottomtabBackground',
+      fontWeight: '700',
+      fontFamily: 'SFProText-Bold',
+      textAlign: 'center',
+    },
+    characterDetailBody: {
+      fontSize: moderateScale(18),
+      color: 'bottomtabBackground',
+      fontWeight: '600',
+      fontFamily: 'SFProText-Regular',
+    },
+
+    episodeHeader: {
+      fontSize: moderateScale(18),
+      color: 'buttonText',
+      fontWeight: '700',
+      fontFamily: 'SFProText-Bold',
+      textAlign: 'center',
+    },
   },
   bottomTabVariants: {
     defaults: {
@@ -128,6 +150,21 @@ const theme = createTheme({
       borderColor: 'buttonText',
       borderWidth: 1.5,
       borderRadius: Math.round(moderateVerticalScale(30)),
+    },
+    characterDetailCard: {
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      height: Math.round(moderateVerticalScale(250)),
+      padding: 10,
+      backgroundColor: 'favouriteBackground',
+    },
+    episodeCard: {
+      backgroundColor: 'episodeBackground',
+      padding: 3,
+      borderColor: 'buttonText',
+      borderWidth: 1.5,
+      borderRadius: Math.round(moderateVerticalScale(15)),
+      width: windowWidth / 2,
     },
   },
 });
