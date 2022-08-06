@@ -15,6 +15,8 @@ storiesOf('ToggleItem', module)
       return (
         <TouchableOpacity onPress={() => settoggle(prev => !prev)}>
           <ToggleItem
+            alignItems={'center'}
+            justifyContent={'center'}
             toggleComponent={
               <SVGIcon
                 type={'grid'}
@@ -25,7 +27,7 @@ storiesOf('ToggleItem', module)
             toggledComponent={
               <SVGIcon
                 type={'list'}
-                height={`${moderateVerticalScale(30)}`}
+                height={`${moderateVerticalScale(40)}`}
                 width={`${moderateScale(40)}`}
               />
             }

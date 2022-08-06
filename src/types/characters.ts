@@ -3,3 +3,23 @@ export type Characters = {
 };
 
 export type FilterProps = 'Alive' | 'Dead' | 'unknown';
+
+type origin = {
+  name: string;
+  url: string;
+};
+
+export type characterList = {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: 'Male';
+  origin: origin;
+  location: origin;
+  image: string;
+  episode: Array<string>;
+  url: string;
+  created: string;
+};

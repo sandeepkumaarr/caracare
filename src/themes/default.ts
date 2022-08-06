@@ -13,6 +13,8 @@ const palette = {
   grayishPink: '#F9CEDE',
   softBlue: '#8DBBF0',
   paleBlue: '#FDFDFF',
+  grayishOrangeOpacity: 'rgba(253, 253, 255, 0.6)',
+  lightRed: '#fc4c4c',
 
   black: '#0B0B0B',
   white: '#F0F2F3',
@@ -25,6 +27,8 @@ const theme = createTheme({
     secondary: palette.softBlue,
     bottomtabBackground: palette.grayishBlue,
     buttonText: palette.black,
+    favourite: palette.lightRed,
+    cardBackground: palette.grayishOrangeOpacity,
   },
   spacing: {
     nil: 0,
@@ -76,6 +80,12 @@ const theme = createTheme({
       fontWeight: '500',
       fontFamily: 'SFProText-Regular',
     },
+    defaultBody: {
+      fontSize: moderateScale(14),
+      color: 'buttonText',
+      fontWeight: '400',
+      fontFamily: 'SFProText-Regular',
+    },
   },
   bottomTabVariants: {
     defaults: {
@@ -105,6 +115,19 @@ const theme = createTheme({
   toggleItemVariants: {
     defaults: {},
     default: {},
+  },
+
+  cardVariants: {
+    defaults: {},
+    default: {},
+    CharacterGridCard: {
+      backgroundColor: 'cardBackground',
+      padding: 3,
+      borderColor: 'buttonText',
+      borderWidth: 1.5,
+      borderRadius: Math.round(moderateVerticalScale(30)),
+      width: windowWidth / 2,
+    },
   },
 });
 
