@@ -8,3 +8,4 @@ export {default as Card} from './Card/Card';
 export {default as CharacterCard} from './Card/CharacterCard';
 export {default as CharacterDetailCard} from './Card/CharacterDetailCard';
 export {default as EpisodeCard} from './Card/EpisodeCard';
+export {default as CharacterInformation} from './CharacterInformation';
