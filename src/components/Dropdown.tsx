@@ -8,8 +8,10 @@ import {
   VariantProps,
   useRestyle,
 } from '@shopify/restyle';
-import {Theme} from '../themes/default';
+import * as Animatable from 'react-native-animatable';
 import {moderateScale} from 'react-native-size-matters';
+
+import {Theme} from '../themes/default';
 import Box from './Box';
 import Text from './Text';
 
@@ -27,6 +29,30 @@ type DropDownProps = AllProps<Theme> &
     showDropdown: boolean;
     setshowDropdown: React.Dispatch<React.SetStateAction<boolean>>;
   };
+
+const fadeIn = {
+  from: {
+    opacity: 0,
+  },
+  to: {
+    opacity: 1,
+  },
+};
+
+const zoomOut = {
+  0: {
+    opacity: 1,
+    scale: 1,
+  },
+  0.5: {
+    opacity: 1,
+    scale: 0.3,
+  },
+  1: {
+    opacity: 0,
+    scale: 0,
+  },
+};
 
 const Dropdown = ({
   children,
@@ -48,18 +74,20 @@ const Dropdown = ({
         <Text variant={'buttonText'}>Filter</Text>
       </TouchableOpacity>
       {showDropdown ? (
-        <Box
-          position={'absolute'}
-          top={Math.round(moderateScale(30))}
-          backgroundColor={'bottomtabBackground'}
-          zIndex={100}
-          width={'100%'}
-          borderBottomLeftRadius={Math.round(moderateScale(10))}
-          borderBottomRightRadius={Math.round(moderateScale(10))}
-          borderTopLeftRadius={Math.round(moderateScale(5))}
-          borderTopRightRadius={Math.round(moderateScale(5))}>
-          {children}
-        </Box>
+        <Animatable.View animation={showDropdown ? fadeIn : zoomOut}>
+          <Box
+            position={'absolute'}
+            top={Math.round(moderateScale(5))}
+            backgroundColor={'bottomtabBackground'}
+            zIndex={100}
+            width={'100%'}
+            borderBottomLeftRadius={Math.round(moderateScale(10))}
+            borderBottomRightRadius={Math.round(moderateScale(10))}
+            borderTopLeftRadius={Math.round(moderateScale(5))}
+            borderTopRightRadius={Math.round(moderateScale(5))}>
+            {children}
+          </Box>
+        </Animatable.View>
       ) : null}
     </BottomTabContainer>
   );
