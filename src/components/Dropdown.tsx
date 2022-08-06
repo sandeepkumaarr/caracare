@@ -30,30 +30,6 @@ type DropDownProps = AllProps<Theme> &
     setshowDropdown: React.Dispatch<React.SetStateAction<boolean>>;
   };
 
-const fadeIn = {
-  from: {
-    opacity: 0,
-  },
-  to: {
-    opacity: 1,
-  },
-};
-
-const zoomOut = {
-  0: {
-    opacity: 1,
-    scale: 1,
-  },
-  0.5: {
-    opacity: 1,
-    scale: 0.3,
-  },
-  1: {
-    opacity: 0,
-    scale: 0,
-  },
-};
-
 const Dropdown = ({
   children,
   showDropdown,
@@ -74,7 +50,7 @@ const Dropdown = ({
         <Text variant={'buttonText'}>Filter</Text>
       </TouchableOpacity>
       {showDropdown ? (
-        <Animatable.View animation={showDropdown ? fadeIn : zoomOut}>
+        <Animatable.View animation={showDropdown ? 'fadeIn' : 'fadeOut'}>
           <Box
             position={'absolute'}
             top={Math.round(moderateScale(5))}

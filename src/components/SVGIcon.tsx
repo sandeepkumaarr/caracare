@@ -5,6 +5,8 @@ import FavouriteON from '../assets/images/svg/favourite-on.svg';
 import FavouriteOFF from '../assets/images/svg/favourite-off.svg';
 import Search from '../assets/images/svg/search.svg';
 import Cancel from '../assets/images/svg/cancel.svg';
+import List from '../assets/images/svg/list.svg';
+import Grid from '../assets/images/svg/grid.svg';
 
 export declare type SVGTypes =
   | 'home'
@@ -12,7 +14,9 @@ export declare type SVGTypes =
   | 'favourite-on'
   | 'favourite-off'
   | 'search'
-  | 'cancel';
+  | 'cancel'
+  | 'list'
+  | 'grid';
 
 type SVGprops = {
   type: SVGTypes;
@@ -52,6 +56,14 @@ export const SVGIcon: React.FC<SVGprops> = ({type, height, width, style}) => {
 
     case 'cancel':
       Component = Cancel;
+      break;
+
+    case 'list':
+      Component = List;
+      break;
+
+    case 'grid':
+      Component = Grid;
       break;
   }
 

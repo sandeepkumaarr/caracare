@@ -101,6 +101,11 @@ const theme = createTheme({
     defaults: {},
     default: {},
   },
+
+  toggleItemVariants: {
+    defaults: {},
+    default: {},
+  },
 });
 
 export type Theme = typeof theme;
