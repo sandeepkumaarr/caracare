@@ -17,6 +17,7 @@ const palette = {
   lightRed: '#fc4c4c',
 
   black: '#0B0B0B',
+  halfBlack: 'rgba(0, 0, 0, 0.3)',
   white: '#F0F2F3',
 };
 const windowWidth = Dimensions.get('window').width;
@@ -29,6 +30,7 @@ const theme = createTheme({
     buttonText: palette.black,
     favourite: palette.lightRed,
     cardBackground: palette.grayishOrangeOpacity,
+    favouriteBackground: palette.halfBlack,
   },
   spacing: {
     nil: 0,
@@ -120,13 +122,12 @@ const theme = createTheme({
   cardVariants: {
     defaults: {},
     default: {},
-    CharacterGridCard: {
+    CharacterCard: {
       backgroundColor: 'cardBackground',
       padding: 3,
       borderColor: 'buttonText',
       borderWidth: 1.5,
       borderRadius: Math.round(moderateVerticalScale(30)),
-      width: windowWidth / 2,
     },
   },
 });
