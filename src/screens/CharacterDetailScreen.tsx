@@ -8,16 +8,23 @@ import {
 } from '../components/Index';
 import {useSelector} from 'react-redux';
 import {State} from '../types/characters';
+import {useRoute} from '@react-navigation/native';
 
 const CharacterDetailScreen = () => {
   const characterDetails = useSelector(
     (state: State) => state.Characters.characterDetails,
   );
 
+  const {params} = useRoute();
+  const {isFavourite}: any = params;
+
   return (
     <SafeAreaView style={styles.container}>
       <Box marginBottom={5}>
-        <CharacterDetailCard character={characterDetails?.character} />
+        <CharacterDetailCard
+          character={characterDetails?.character}
+          isFavourite={isFavourite}
+        />
       </Box>
 
       <Box marginTop={10}>

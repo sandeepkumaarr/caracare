@@ -2,6 +2,7 @@ import {StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import FastImage from 'react-native-fast-image';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Card from './Card';
 import Text from '../Text';
@@ -19,13 +20,23 @@ import {setCharacterDetailsActionCreator} from '../../redux/reducers/charactersR
 type CharacterCard = {
   character: characterList;
   isGrid: boolean;
+  favouriteKeys: Array<number>;
+  RemoveItems?: Function;
 };
 const windowWidth = Dimensions.get('window').width;
 
-const CharacterCard = ({character, isGrid}: CharacterCard) => {
-  const [favourite, setfavourite] = useState(false);
+const CharacterCard = ({
+  character,
+  isGrid,
+  favouriteKeys,
+  RemoveItems,
+}: CharacterCard) => {
   const {favouriteBackground} = theme?.colors || {};
   const [episodeDetails, setEpisodeDetails] = useState<Array<episode>>([]);
+  const isFavourite = favouriteKeys?.find(item => item === character.id)
+    ? true
+    : false;
+  const [favourite, setfavourite] = useState(isFavourite);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -71,13 +82,22 @@ const CharacterCard = ({character, isGrid}: CharacterCard) => {
     };
   }, []);
 
+  const SaveOrRemoveFavourites = async (value: characterList) => {
+    if (!favourite) {
+      await AsyncStorage.setItem(value?.id?.toString(), JSON.stringify(value));
+    } else {
+      await AsyncStorage.removeItem(value?.id?.toString());
+      if (RemoveItems) RemoveItems(value?.id);
+    }
+  };
+
   return (
     <TouchableOpacity
       onPress={() =>
         dispatch(
           setCharacterDetailsActionCreator({
-            character: character,
-            episode: episodeDetails,
+            CharacterDetails: {character: character, episode: episodeDetails},
+            isFavourite: favourite,
           }),
         )
       }
@@ -122,7 +142,10 @@ const CharacterCard = ({character, isGrid}: CharacterCard) => {
           ) : null}
 
           <TouchableOpacity
-            onPress={() => setfavourite(prev => !prev)}
+            onPress={() => {
+              SaveOrRemoveFavourites(character);
+              setfavourite(prev => !prev);
+            }}
             style={[
               styles.favouritebtn,
               {
@@ -181,7 +204,7 @@ const CharacterCard = ({character, isGrid}: CharacterCard) => {
             </Box>
             <Box maxWidth={windowWidth / 2.5}>
               <Text variant={'defaultBody'} numberOfLines={2}>
-                {character?.location?.name}
+                {episodeDetails[0]?.name}
               </Text>
             </Box>
           </Box>

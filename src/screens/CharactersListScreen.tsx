@@ -22,6 +22,9 @@ import {SVGIcon} from '../components/SVGIcon';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 import {FilterProps, State} from '../types/characters';
 import CharacterCardSkeleton from '../SkeletonPlaceholders/CharacterCardSkeleton';
+import {getLocalKeys} from '../utils/commonfunctions';
+import {useNavigation} from '@react-navigation/native';
+import routes from '../navigation/routes';
 
 const CharactersListScreen = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -32,6 +35,9 @@ const CharactersListScreen = () => {
   const [showDropdown, setshowDropdown] = useState(false);
   const [toggle, settoggle] = useState(false);
   const [numCols, setColumnNo] = useState(2);
+
+  const [favouriteKeys, setFavouriteKeys] = useState<Array<number>>([]);
+  const navigation = useNavigation();
 
   const charactersList = useSelector(
     (state: State) => state.Characters.charactersList,
@@ -47,10 +53,31 @@ const CharactersListScreen = () => {
         isLazyLoading: false,
       }),
     );
+
     return () => {
       null;
     };
   }, []);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      getLocalKeys().then(response => {
+        let favKeys = response?.map(Number);
+
+        if (favKeys && favKeys?.length > 0) {
+          setFavouriteKeys(favKeys);
+        }
+
+        dispatch(
+          getCharacters({
+            isLazyLoading: false,
+          }),
+        );
+      });
+    });
+
+    return unsubscribe;
+  }, [navigation]);
 
   const ListHeaderItem = () => {
     return (
@@ -162,7 +189,11 @@ const CharactersListScreen = () => {
           return charactersListLoading ? (
             <CharacterCardSkeleton isGrid={!toggle} />
           ) : (
-            <CharacterCard character={item} isGrid={!toggle} />
+            <CharacterCard
+              character={item}
+              isGrid={!toggle}
+              favouriteKeys={favouriteKeys}
+            />
           );
         }}
         showsVerticalScrollIndicator={false}
@@ -179,6 +210,7 @@ const CharactersListScreen = () => {
         ListHeaderComponent={() => {
           return <ListHeaderItem />;
         }}
+        onEndReached={() => console.log('End Reached')}
       />
 
       <BottomTab
@@ -188,14 +220,26 @@ const CharactersListScreen = () => {
         paddingBottom={10}
         children={
           <>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate(
+                  routes.CHARACTERS_LIST_SCREEN as never,
+                  {} as never,
+                )
+              }>
               <SVGIcon
                 type={'home'}
                 height={`${moderateVerticalScale(40)}`}
                 width={`${moderateScale(40)}`}
               />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate(
+                  routes.FAVOURITES_SCREEN as never,
+                  {} as never,
+                )
+              }>
               <SVGIcon
                 type={'favourite'}
                 height={`${moderateVerticalScale(40)}`}

@@ -1,5 +1,5 @@
 import {ImageBackground, StyleSheet, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Card from './Card';
 import Box from '../Box';
 import Text from '../Text';
@@ -8,15 +8,28 @@ import {SVGIcon} from '../SVGIcon';
 import {characterList} from '../../types/characters';
 import {useNavigation} from '@react-navigation/native';
 import routes from '../../navigation/routes';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type CharacterDetailCardProps = {
   character: characterList;
+  isFavourite: boolean;
 };
 
-const CharacterDetailCard = ({character}: CharacterDetailCardProps) => {
-  const [favourite, setfavourite] = useState(false);
+const CharacterDetailCard = ({
+  character,
+  isFavourite,
+}: CharacterDetailCardProps) => {
+  const [favourite, setfavourite] = useState(isFavourite);
 
   const navigation = useNavigation();
+
+  const SaveOrRemoveFavourites = async (value: characterList) => {
+    if (!favourite) {
+      await AsyncStorage.setItem(value?.id?.toString(), JSON.stringify(value));
+    } else {
+      await AsyncStorage.removeItem(value?.id?.toString());
+    }
+  };
 
   return (
     <ImageBackground
@@ -43,7 +56,10 @@ const CharacterDetailCard = ({character}: CharacterDetailCardProps) => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => setfavourite(prev => !prev)}
+            onPress={() => {
+              SaveOrRemoveFavourites(character);
+              setfavourite(prev => !prev);
+            }}
             style={styles.favouriteContainer}>
             <SVGIcon
               type={favourite ? 'favourite-on' : 'favourite-off'}

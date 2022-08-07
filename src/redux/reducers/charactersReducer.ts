@@ -49,14 +49,21 @@ export const CharactersSlice = createSlice({
   reducers: {
     setCharacterDetails: (
       state: {characterDetails: CharacterDetails},
-      {payload}: PayloadAction<CharacterDetails>,
+      {
+        payload,
+      }: PayloadAction<{
+        CharacterDetails: CharacterDetails;
+        isFavourite: boolean;
+      }>,
     ) => {
-      state.characterDetails = payload;
+      state.characterDetails = payload.CharacterDetails;
 
       setTimeout(() => {
         RootNavigation.navigate(
           routes.CHARACTER_DETAILS_SCREEN as never,
-          {} as never,
+          {
+            isFavourite: payload.isFavourite,
+          } as never,
         );
       }, 100);
     },
