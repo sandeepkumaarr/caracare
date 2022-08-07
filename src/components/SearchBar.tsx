@@ -17,7 +17,14 @@ import {
   Platform,
 } from 'react-native';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
+import {useDispatch} from 'react-redux';
+import {
+  getCharacters,
+  searchAndFilterCharacters,
+} from '../redux/actions/CharacterActions';
+import {AppDispatch} from '../redux/store';
 import {Theme} from '../themes/default';
+import {FilterProps} from '../types/characters';
 import Box from './Box';
 import {SVGIcon} from './SVGIcon';
 
@@ -45,6 +52,7 @@ const SearchBar = ({
   ...rest
 }: searchBarProps) => {
   const props = useRestyle([restyleFunctions], rest);
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <SearchBarContainer {...props}>
@@ -71,6 +79,15 @@ const SearchBar = ({
             setClicked(true);
           }}
           returnKeyType="search"
+          onSubmitEditing={e =>
+            dispatch(
+              searchAndFilterCharacters({
+                name: e.nativeEvent.text,
+                status: null,
+              }),
+            )
+          }
+          clearTextOnFocus
         />
         {clicked && (
           <TouchableOpacity

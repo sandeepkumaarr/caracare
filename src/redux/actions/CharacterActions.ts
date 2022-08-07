@@ -28,6 +28,22 @@ export const lazyLoadCharacters = createAsyncThunk(
   },
 );
 
+export const searchAndFilterCharacters = createAsyncThunk(
+  'characters/searchAndFilterCharacters',
+  async (
+    params: {name: string | null; status: string | null},
+    {rejectWithValue},
+  ) => {
+    try {
+      let {data: Response} = await api.fetchGetParams('/character', params);
+
+      return Response;
+    } catch (err) {
+      return rejectWithValue('Unable to fetch equipment data');
+    }
+  },
+);
+
 export const getEpisodes = createAsyncThunk(
   'characters/getEpisodes',
   async (data: Array<number>, {rejectWithValue}) => {

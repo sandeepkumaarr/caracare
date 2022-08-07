@@ -14,6 +14,7 @@ import {AppDispatch} from '../redux/store';
 import {
   getCharacters,
   lazyLoadCharacters,
+  searchAndFilterCharacters,
 } from '../redux/actions/CharacterActions';
 import {
   BottomTab,
@@ -28,7 +29,7 @@ import {SVGIcon} from '../components/SVGIcon';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 import {FilterProps, State} from '../types/characters';
 import CharacterCardSkeleton from '../SkeletonPlaceholders/CharacterCardSkeleton';
-import {getLastItem, getLocalKeys} from '../utils/commonfunctions';
+import {getLocalKeys} from '../utils/commonfunctions';
 import {useNavigation} from '@react-navigation/native';
 import routes from '../navigation/routes';
 
@@ -37,7 +38,7 @@ const CharactersListScreen = () => {
   const [clicked, setClicked] = useState(false);
   const [searchPhrase, setSearchPhrase] = useState('');
   const [selectedFilterItem, setSelectedFilterItem] =
-    useState<FilterProps>('unknown');
+    useState<FilterProps>(null);
   const [showDropdown, setshowDropdown] = useState(false);
   const [toggle, settoggle] = useState(false);
   const [numCols, setColumnNo] = useState(2);
@@ -107,6 +108,12 @@ const CharactersListScreen = () => {
                     onPress={() => {
                       setSelectedFilterItem('Alive');
                       setshowDropdown(false);
+                      dispatch(
+                        searchAndFilterCharacters({
+                          name: null,
+                          status: 'Alive',
+                        }),
+                      );
                     }}>
                     <Text variant={'dropDownText'}>Alive</Text>
                   </TouchableOpacity>
@@ -115,6 +122,12 @@ const CharactersListScreen = () => {
                     onPress={() => {
                       setSelectedFilterItem('Dead');
                       setshowDropdown(false);
+                      dispatch(
+                        searchAndFilterCharacters({
+                          name: null,
+                          status: 'Dead',
+                        }),
+                      );
                     }}>
                     <Text variant={'dropDownText'}>Dead</Text>
                   </TouchableOpacity>
@@ -123,6 +136,12 @@ const CharactersListScreen = () => {
                     onPress={() => {
                       setSelectedFilterItem('unknown');
                       setshowDropdown(false);
+                      dispatch(
+                        searchAndFilterCharacters({
+                          name: null,
+                          status: 'unknown',
+                        }),
+                      );
                     }}>
                     <Text variant={'dropDownText'}>unknown</Text>
                   </TouchableOpacity>
@@ -192,6 +211,7 @@ const CharactersListScreen = () => {
         key={numCols}
         numColumns={numCols}
         data={charactersList}
+        onEndReachedThreshold={0.5}
         contentContainerStyle={{
           marginHorizontal: Math.round(moderateVerticalScale(10)),
         }}

@@ -6,7 +6,7 @@ export type Characters = {
   characterListLazyLoading: boolean;
 };
 
-export type FilterProps = 'Alive' | 'Dead' | 'unknown';
+export type FilterProps = 'Alive' | 'Dead' | 'unknown' | null;
 
 type origin = {
   name: string;

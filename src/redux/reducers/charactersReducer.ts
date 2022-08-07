@@ -5,7 +5,11 @@ import {
   Characters,
   CharacterDetails,
 } from '../../types/characters';
-import {getCharacters, lazyLoadCharacters} from '../actions/CharacterActions';
+import {
+  getCharacters,
+  lazyLoadCharacters,
+  searchAndFilterCharacters,
+} from '../actions/CharacterActions';
 import * as RootNavigation from '../../navigation/RootNavigation';
 import routes from '../../navigation/routes';
 
@@ -126,6 +130,35 @@ export const CharactersSlice = createSlice({
 
     builder.addCase(lazyLoadCharacters.rejected, (state, {payload}) => {
       state.characterListLazyLoading = false;
+    });
+
+    builder.addCase(searchAndFilterCharacters.pending, (state, {payload}) => {
+      state.characterListLoading = true;
+    });
+
+    builder.addCase(
+      searchAndFilterCharacters.fulfilled,
+      (
+        state: {
+          characterListLoading: boolean;
+          charactersList: Array<characterList>;
+          characterListResponseInfo: characterResponseInfo;
+        },
+        {
+          payload,
+        }: PayloadAction<{
+          info: characterResponseInfo;
+          results: Array<characterList>;
+        }>,
+      ) => {
+        state.characterListLoading = false;
+        state.charactersList = [...payload?.results];
+        state.characterListResponseInfo = payload?.info;
+      },
+    );
+
+    builder.addCase(searchAndFilterCharacters.rejected, (state, {payload}) => {
+      state.characterListLoading = false;
     });
   },
 });
