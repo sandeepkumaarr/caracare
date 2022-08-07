@@ -24,7 +24,6 @@ import {
 } from '../redux/actions/CharacterActions';
 import {AppDispatch} from '../redux/store';
 import {Theme} from '../themes/default';
-import {FilterProps} from '../types/characters';
 import Box from './Box';
 import {SVGIcon} from './SVGIcon';
 

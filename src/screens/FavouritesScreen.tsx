@@ -34,7 +34,11 @@ const FavouritesScreen = () => {
     try {
       let result: Array<characterList> = [];
       const keys = await AsyncStorage.getAllKeys();
-      for (const key of keys) {
+      let filterKeys = keys?.filter(
+        item => item !== 'toggle' && item !== 'numCols',
+      );
+
+      for (const key of filterKeys) {
         const val = await AsyncStorage.getItem(key);
         if (val) result.push(JSON.parse(val));
       }
@@ -57,7 +61,11 @@ const FavouritesScreen = () => {
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       getLocalKeys().then(response => {
-        let favKeys = response?.map(Number);
+        let FilterResponse = response?.filter(
+          item => item !== 'toggle' && item !== 'numCols',
+        );
+
+        let favKeys = FilterResponse?.map(Number);
 
         if (favKeys && favKeys?.length > 0) {
           setFavouriteKeys(favKeys);
@@ -145,7 +153,7 @@ const FavouritesScreen = () => {
           );
         }}
         showsVerticalScrollIndicator={false}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={item => item?.id?.toString()}
         ListFooterComponent={() => (
           <View
             style={{

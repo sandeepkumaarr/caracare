@@ -6,9 +6,9 @@ import Navigator from './src/navigation/Navigator';
 import theme from './src/themes/default';
 
 // import {NativeModules} from 'react-native';
-// NativeModules.DevSettings.setIsDebuggingRemotely(false);
+// NativeModules.DevSettings.setIsDebuggingRemotely(true);
 
-const STORYBOOK_START = true;
+const STORYBOOK_START = false;
 
 const App = () => {
   return (

@@ -32,6 +32,7 @@ import CharacterCardSkeleton from '../SkeletonPlaceholders/CharacterCardSkeleton
 import {getLocalKeys} from '../utils/commonfunctions';
 import {useNavigation} from '@react-navigation/native';
 import routes from '../navigation/routes';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CharactersListScreen = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -77,6 +78,21 @@ const CharactersListScreen = () => {
     return unsubscribe;
   }, [navigation]);
 
+  const getGridSelection = async () => {
+    let toggleLocalValue = await AsyncStorage.getItem('toggle');
+    let numColsLocalValue = await AsyncStorage.getItem('numCols');
+
+    if (toggleLocalValue) settoggle(JSON.parse(toggleLocalValue));
+    if (numColsLocalValue) setColumnNo(JSON.parse(numColsLocalValue));
+  };
+
+  useEffect(() => {
+    getGridSelection();
+    return () => {
+      null;
+    };
+  }, []);
+
   const ListHeaderItem = () => {
     return (
       <Box
@@ -95,7 +111,11 @@ const CharactersListScreen = () => {
         </Box>
 
         <Box flexDirection={'row'} alignItems="center" zIndex={100}>
-          <Box alignItems={'center'} paddingRight={4} zIndex={100}>
+          <Box
+            alignItems={'center'}
+            paddingRight={4}
+            zIndex={100}
+            flexDirection="row">
             <Dropdown
               showDropdown={showDropdown}
               setshowDropdown={setshowDropdown}
@@ -148,16 +168,42 @@ const CharactersListScreen = () => {
                 </>
               }
             />
+            {selectedFilterItem ? (
+              <Box position={'absolute'} top={-10} zIndex={200} right={0}>
+                <TouchableOpacity
+                  onPress={() => {
+                    setSelectedFilterItem(null);
+                    setshowDropdown(false);
+                    dispatch(
+                      searchAndFilterCharacters({
+                        name: null,
+                        status: null,
+                      }),
+                    );
+                  }}>
+                  <SVGIcon
+                    type={'cancel'}
+                    height={`${moderateVerticalScale(20)}`}
+                    width={`${moderateScale(20)}`}
+                  />
+                </TouchableOpacity>
+              </Box>
+            ) : null}
           </Box>
 
           <TouchableOpacity
-            onPress={() => {
+            onPress={async () => {
               if (toggle) {
                 setColumnNo(2);
+                await AsyncStorage.setItem('numCols', JSON.stringify(2));
               } else {
                 setColumnNo(1);
+                await AsyncStorage.setItem('numCols', JSON.stringify(1));
               }
-              settoggle(prev => !prev);
+              settoggle(prev => {
+                AsyncStorage.setItem('toggle', JSON.stringify(!prev));
+                return !prev;
+              });
             }}>
             <ToggleItem
               alignItems={'center'}

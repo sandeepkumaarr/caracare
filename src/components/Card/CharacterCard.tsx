@@ -52,19 +52,21 @@ const CharacterCard = ({
 
   useEffect(() => {
     let episodeIds = [];
-    if (character && character?.episode.length > 0) {
+    if (character && character?.episode?.length > 0) {
       let firstId = getLastItem(character?.episode[0]);
       let lastId;
 
       episodeIds.push(Number(firstId));
 
-      if (character?.episode.length > 1) {
-        lastId = getLastItem(character?.episode[character?.episode.length - 1]);
+      if (character?.episode?.length > 1) {
+        lastId = getLastItem(
+          character?.episode[character?.episode?.length - 1],
+        );
         episodeIds.push(Number(lastId));
       }
     }
 
-    if (episodeIds.length > 0) {
+    if (episodeIds?.length > 0) {
       dispatch(getEpisodes(episodeIds))
         .then(unwrapResult)
         .then(result => {
