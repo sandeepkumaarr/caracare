@@ -15,7 +15,7 @@ import {
   routeNameRef,
   isReadyRef,
 } from './src/navigation/RootNavigation';
-import store from './src/redux/store';
+import {store} from './src/redux/store';
 
 const Root = () => {
   useEffect(() => {

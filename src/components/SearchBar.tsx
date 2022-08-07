@@ -14,6 +14,7 @@ import {
   Keyboard,
   Button,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 import {Theme} from '../themes/default';
@@ -48,7 +49,8 @@ const SearchBar = ({
   return (
     <SearchBarContainer {...props}>
       <Box
-        padding={4}
+        paddingHorizontal={3}
+        paddingVertical={Platform.OS === 'ios' ? 4 : 0}
         flexDirection={'row'}
         borderRadius={Math.round(moderateVerticalScale(15))}
         alignItems="center"

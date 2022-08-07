@@ -50,7 +50,9 @@ const Dropdown = ({
         <Text variant={'buttonText'}>Filter</Text>
       </TouchableOpacity>
       {showDropdown ? (
-        <Animatable.View animation={showDropdown ? 'fadeIn' : 'fadeOut'}>
+        <Animatable.View
+          animation={showDropdown ? 'fadeIn' : 'fadeOut'}
+          style={{zIndex: 100}}>
           <Box
             position={'absolute'}
             top={Math.round(moderateScale(5))}

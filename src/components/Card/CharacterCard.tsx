@@ -5,11 +5,13 @@ import {
   ImageBackground,
 } from 'react-native';
 import React, {useState} from 'react';
+import FastImage from 'react-native-fast-image';
+import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
+
 import Card from './Card';
 import Text from '../Text';
 import Box from '../Box';
 import {SVGIcon} from '../SVGIcon';
-import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 import {characterList} from '../../types/characters';
 import theme from '../../themes/default';
 
@@ -34,16 +36,33 @@ const CharacterCard = ({character, isGrid}: CharacterCard) => {
   };
 
   return (
-    <ImageBackground
-      source={{uri: character.image}}
-      resizeMode="cover"
-      style={[
-        styles.imageContainer,
-        {width: isGrid ? windowWidth / 2 : windowWidth},
-      ]}
-      imageStyle={styles.backgroundImage}>
+    <Box flex={1} marginVertical={3}>
+      <FastImage
+        style={[
+          styles.image,
+          {
+            width: isGrid ? windowWidth / 2.2 : windowWidth - 25,
+            height: isGrid
+              ? Math.round(moderateVerticalScale(windowWidth > 700 ? 310 : 260))
+              : Math.round(
+                  moderateVerticalScale(windowWidth > 700 ? 200 : 180),
+                ),
+          },
+        ]}
+        source={{
+          uri: character.image,
+          priority: FastImage.priority.normal,
+        }}
+        resizeMode={FastImage.resizeMode.cover}
+      />
+
       <Card
-        width={isGrid ? windowWidth / 2 : windowWidth}
+        width={isGrid ? windowWidth / 2.2 : windowWidth - 25}
+        height={
+          isGrid
+            ? Math.round(moderateVerticalScale(windowWidth > 700 ? 310 : 260))
+            : Math.round(moderateVerticalScale(windowWidth > 700 ? 200 : 180))
+        }
         variant={'CharacterCard'}>
         <Box
           flexDirection={'row'}
@@ -56,12 +75,12 @@ const CharacterCard = ({character, isGrid}: CharacterCard) => {
 
           <TouchableOpacity
             onPress={() => setfavourite(prev => !prev)}
-            style={{
-              backgroundColor: favouriteBackground,
-              padding: moderateScale(5),
-              borderRadius: 20,
-              alignSelf: 'flex-end',
-            }}>
+            style={[
+              styles.favouritebtn,
+              {
+                backgroundColor: favouriteBackground,
+              },
+            ]}>
             <SVGIcon
               type={favourite ? 'favourite-on' : 'favourite-off'}
               height={`${moderateVerticalScale(25)}`}
@@ -105,7 +124,7 @@ const CharacterCard = ({character, isGrid}: CharacterCard) => {
           flexDirection={isGrid ? 'column' : 'row'}
           justifyContent={'space-between'}
           alignItems={isGrid ? 'flex-start' : 'center'}
-          marginVertical={5}>
+          marginTop={8}>
           <Box>
             <Box>
               <Text variant={'buttonText'} textAlign="left" numberOfLines={1}>
@@ -133,17 +152,25 @@ const CharacterCard = ({character, isGrid}: CharacterCard) => {
           </Box>
         </Box>
       </Card>
-    </ImageBackground>
+    </Box>
   );
 };
 
 export default CharacterCard;
 
 const styles = StyleSheet.create({
-  imageContainer: {
-    justifyContent: 'center',
-  },
-  backgroundImage: {
+  image: {
     borderRadius: Math.round(moderateVerticalScale(30)),
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    alignItems: 'stretch',
+    bottom: 0,
+    right: 0,
+  },
+  favouritebtn: {
+    padding: Math.round(moderateScale(5)),
+    borderRadius: 20,
+    alignSelf: 'flex-end',
   },
 });

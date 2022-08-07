@@ -5,7 +5,9 @@ const reducer = combineReducers({
   Characters: CharactersSlice.reducer,
 });
 
-export default configureStore({
+export const store = configureStore({
   reducer,
   devTools: true,
 });
+
+export type AppDispatch = typeof store.dispatch;

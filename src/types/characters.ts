@@ -1,5 +1,7 @@
 export type Characters = {
-  charactersList: Array<{}>;
+  charactersList: Array<characterList>;
+  characterListLoading: boolean;
+  characterListResponseInfo: characterResponseInfo;
 };
 
 export type FilterProps = 'Alive' | 'Dead' | 'unknown';
@@ -32,4 +34,21 @@ export type episode = {
   characters: Array<string>;
   url: string;
   created: string;
+};
+
+export type characterResponseInfo = {
+  count: number;
+  pages: number;
+  next: string;
+  prev: string;
+};
+
+export type getcharactersParams = {
+  name?: string;
+  status?: string;
+  isLazyLoading: boolean;
+};
+
+export type State = {
+  Characters: Characters;
 };
