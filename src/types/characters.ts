@@ -3,6 +3,7 @@ export type Characters = {
   characterListLoading: boolean;
   characterListResponseInfo: characterResponseInfo;
   characterDetails: CharacterDetails;
+  characterListLazyLoading: boolean;
 };
 
 export type FilterProps = 'Alive' | 'Dead' | 'unknown';

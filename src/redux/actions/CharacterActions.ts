@@ -4,19 +4,24 @@ import api from '../api';
 
 export const getCharacters = createAsyncThunk(
   'characters/getCharacters',
-  async (data: getcharactersParams, {rejectWithValue}) => {
-    let params = {
-      name: data?.name,
-      status: data?.status,
-    };
+  async (data: {}, {rejectWithValue}) => {
+    try {
+      let {data: Response} = await api.fetchGet('/character');
 
-    let resetValue =
-      (data?.name || data?.status) && !data.isLazyLoading ? true : false;
+      return Response;
+    } catch (err) {
+      return rejectWithValue('Unable to fetch equipment data');
+    }
+  },
+);
 
+export const lazyLoadCharacters = createAsyncThunk(
+  'characters/lazyLoadCharacters',
+  async (params: {page: number}, {rejectWithValue}) => {
     try {
       let {data: Response} = await api.fetchGetParams('/character', params);
 
-      return {Response: Response, isReset: resetValue};
+      return Response;
     } catch (err) {
       return rejectWithValue('Unable to fetch equipment data');
     }

@@ -4,11 +4,17 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {URL, URLSearchParams} from 'react-native-url-polyfill';
+
 import {AppDispatch} from '../redux/store';
-import {getCharacters} from '../redux/actions/CharacterActions';
+import {
+  getCharacters,
+  lazyLoadCharacters,
+} from '../redux/actions/CharacterActions';
 import {
   BottomTab,
   Box,
@@ -22,7 +28,7 @@ import {SVGIcon} from '../components/SVGIcon';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 import {FilterProps, State} from '../types/characters';
 import CharacterCardSkeleton from '../SkeletonPlaceholders/CharacterCardSkeleton';
-import {getLocalKeys} from '../utils/commonfunctions';
+import {getLastItem, getLocalKeys} from '../utils/commonfunctions';
 import {useNavigation} from '@react-navigation/native';
 import routes from '../navigation/routes';
 
@@ -47,17 +53,13 @@ const CharactersListScreen = () => {
     (state: State) => state.Characters?.characterListLoading,
   );
 
-  useEffect(() => {
-    dispatch(
-      getCharacters({
-        isLazyLoading: false,
-      }),
-    );
+  const charactersResponseInfo = useSelector(
+    (state: State) => state.Characters.characterListResponseInfo,
+  );
 
-    return () => {
-      null;
-    };
-  }, []);
+  const charactersListLazyLoading = useSelector(
+    (state: State) => state.Characters?.characterListLazyLoading,
+  );
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
@@ -67,12 +69,7 @@ const CharactersListScreen = () => {
         if (favKeys && favKeys?.length > 0) {
           setFavouriteKeys(favKeys);
         }
-
-        dispatch(
-          getCharacters({
-            isLazyLoading: false,
-          }),
-        );
+        dispatch(getCharacters({}));
       });
     });
 
@@ -168,6 +165,19 @@ const CharactersListScreen = () => {
     );
   };
 
+  const onEndReachedLazyLoad = () => {
+    if (
+      charactersResponseInfo?.next &&
+      !charactersListLazyLoading &&
+      !charactersListLoading
+    ) {
+      const url = new URL(charactersResponseInfo?.next);
+      const urlParams = new URLSearchParams(url.search);
+      const param = urlParams.get('page');
+      if (param) dispatch(lazyLoadCharacters({page: Number(param)}));
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <SearchBar
@@ -198,19 +208,21 @@ const CharactersListScreen = () => {
         }}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id.toString()}
-        ListFooterComponent={() => (
-          <View
-            style={{
-              marginBottom: Math.round(moderateVerticalScale(100)),
-            }}
-          />
-        )}
         stickyHeaderIndices={[0]}
         ListHeaderComponentStyle={styles.headerComponentStyle}
         ListHeaderComponent={() => {
           return <ListHeaderItem />;
         }}
-        onEndReached={() => console.log('End Reached')}
+        onEndReached={onEndReachedLazyLoad}
+        ListFooterComponent={() =>
+          charactersListLazyLoading ? <ActivityIndicator size="large" /> : null
+        }
+        ListFooterComponentStyle={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: Math.round(moderateScale(20)),
+          marginBottom: Math.round(moderateScale(100)),
+        }}
       />
 
       <BottomTab

@@ -5,7 +5,7 @@ import {
   Characters,
   CharacterDetails,
 } from '../../types/characters';
-import {getCharacters} from '../actions/CharacterActions';
+import {getCharacters, lazyLoadCharacters} from '../actions/CharacterActions';
 import * as RootNavigation from '../../navigation/RootNavigation';
 import routes from '../../navigation/routes';
 
@@ -41,6 +41,7 @@ export const CharactersInitialState: Characters = {
     },
     episode: [],
   },
+  characterListLazyLoading: false,
 };
 
 export const CharactersSlice = createSlice({
@@ -84,32 +85,47 @@ export const CharactersSlice = createSlice({
         {
           payload,
         }: PayloadAction<{
-          Response: {
-            info: characterResponseInfo;
-            results: Array<characterList>;
-          };
-          isReset: boolean;
+          info: characterResponseInfo;
+          results: Array<characterList>;
         }>,
       ) => {
         state.characterListLoading = false;
-
-        state.charactersList = [...payload?.Response?.results];
-
-        // if (payload?.isReset) {
-        //   state.charactersList = [...payload?.Response?.results];
-        // } else {
-        //   state.charactersList = [
-        //     ...state.charactersList,
-        //     ...payload?.Response?.results,
-        //   ];
-        // }
-
-        state.characterListResponseInfo = payload?.Response?.info;
+        state.charactersList = [...payload?.results];
+        state.characterListResponseInfo = payload?.info;
       },
     );
 
     builder.addCase(getCharacters.rejected, (state, {payload}) => {
       state.characterListLoading = false;
+    });
+
+    builder.addCase(lazyLoadCharacters.pending, (state, {payload}) => {
+      state.characterListLazyLoading = true;
+    });
+
+    builder.addCase(
+      lazyLoadCharacters.fulfilled,
+      (
+        state: {
+          characterListLazyLoading: boolean;
+          charactersList: Array<characterList>;
+          characterListResponseInfo: characterResponseInfo;
+        },
+        {
+          payload,
+        }: PayloadAction<{
+          info: characterResponseInfo;
+          results: Array<characterList>;
+        }>,
+      ) => {
+        state.characterListLazyLoading = false;
+        state.charactersList = [...state.charactersList, ...payload?.results];
+        state.characterListResponseInfo = payload?.info;
+      },
+    );
+
+    builder.addCase(lazyLoadCharacters.rejected, (state, {payload}) => {
+      state.characterListLazyLoading = false;
     });
   },
 });

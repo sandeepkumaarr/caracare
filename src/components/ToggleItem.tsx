@@ -8,7 +8,6 @@ import {
   VariantProps,
   useRestyle,
 } from '@shopify/restyle';
-import * as Animatable from 'react-native-animatable';
 
 import {Theme} from '../themes/default';
 import Box from './Box';
@@ -34,9 +33,7 @@ const ToggleItem = ({...rest}: ToggleItemProps) => {
 
   return (
     <ToggleItemContainer {...props}>
-      <Animatable.View animation={'fadeIn'}>
-        {toggle ? toggledComponent : toggleComponent}
-      </Animatable.View>
+      {toggle ? toggledComponent : toggleComponent}
     </ToggleItemContainer>
   );
 };
