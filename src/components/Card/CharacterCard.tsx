@@ -1,10 +1,5 @@
-import {
-  StyleSheet,
-  Dimensions,
-  TouchableOpacity,
-  ImageBackground,
-} from 'react-native';
-import React, {useState} from 'react';
+import {StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import FastImage from 'react-native-fast-image';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 
@@ -12,8 +7,14 @@ import Card from './Card';
 import Text from '../Text';
 import Box from '../Box';
 import {SVGIcon} from '../SVGIcon';
-import {characterList} from '../../types/characters';
+import {characterList, episode} from '../../types/characters';
 import theme from '../../themes/default';
+import {useDispatch} from 'react-redux';
+import {AppDispatch} from '../../redux/store';
+import {getEpisodes} from '../../redux/actions/CharacterActions';
+import {unwrapResult} from '@reduxjs/toolkit';
+import {getLastItem} from '../../utils/commonfunctions';
+import {setCharacterDetailsActionCreator} from '../../redux/reducers/charactersReducer';
 
 type CharacterCard = {
   character: characterList;
@@ -24,6 +25,9 @@ const windowWidth = Dimensions.get('window').width;
 const CharacterCard = ({character, isGrid}: CharacterCard) => {
   const [favourite, setfavourite] = useState(false);
   const {favouriteBackground} = theme?.colors || {};
+  const [episodeDetails, setEpisodeDetails] = useState<Array<episode>>([]);
+
+  const dispatch = useDispatch<AppDispatch>();
 
   const Header = () => {
     return (
@@ -35,8 +39,52 @@ const CharacterCard = ({character, isGrid}: CharacterCard) => {
     );
   };
 
+  useEffect(() => {
+    let episodeIds = [];
+    if (character && character?.episode.length > 0) {
+      let firstId = getLastItem(character?.episode[0]);
+      let lastId;
+
+      episodeIds.push(Number(firstId));
+
+      if (character?.episode.length > 1) {
+        lastId = getLastItem(character?.episode[character?.episode.length - 1]);
+        episodeIds.push(Number(lastId));
+      }
+    }
+
+    if (episodeIds.length > 0) {
+      dispatch(getEpisodes(episodeIds))
+        .then(unwrapResult)
+        .then(result => {
+          let isArrayItems = Array.isArray(result);
+          if (isArrayItems) {
+            setEpisodeDetails([...result]);
+          } else {
+            setEpisodeDetails([result]);
+          }
+        });
+    }
+
+    return () => {
+      null;
+    };
+  }, []);
+
   return (
-    <Box flex={1} marginVertical={3}>
+    <TouchableOpacity
+      onPress={() =>
+        dispatch(
+          setCharacterDetailsActionCreator({
+            character: character,
+            episode: episodeDetails,
+          }),
+        )
+      }
+      style={{
+        flex: 1,
+        marginVertical: Math.round(moderateVerticalScale(8)),
+      }}>
       <FastImage
         style={[
           styles.image,
@@ -152,7 +200,7 @@ const CharacterCard = ({character, isGrid}: CharacterCard) => {
           </Box>
         </Box>
       </Card>
-    </Box>
+    </TouchableOpacity>
   );
 };
 

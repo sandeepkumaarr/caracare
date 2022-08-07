@@ -6,6 +6,8 @@ import Text from '../Text';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 import {SVGIcon} from '../SVGIcon';
 import {characterList} from '../../types/characters';
+import {useNavigation} from '@react-navigation/native';
+import routes from '../../navigation/routes';
 
 type CharacterDetailCardProps = {
   character: characterList;
@@ -13,6 +15,8 @@ type CharacterDetailCardProps = {
 
 const CharacterDetailCard = ({character}: CharacterDetailCardProps) => {
   const [favourite, setfavourite] = useState(false);
+
+  const navigation = useNavigation();
 
   return (
     <ImageBackground
@@ -24,7 +28,13 @@ const CharacterDetailCard = ({character}: CharacterDetailCardProps) => {
           flexDirection={'row'}
           justifyContent="space-between"
           alignItems={'center'}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate(
+                routes.CHARACTERS_LIST_SCREEN as never,
+                {} as never,
+              )
+            }>
             <SVGIcon
               type={'back'}
               height={`${moderateVerticalScale(40)}`}

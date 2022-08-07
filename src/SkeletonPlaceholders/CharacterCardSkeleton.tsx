@@ -18,8 +18,10 @@ export default function CharacterCardSkeleton({
         style={{
           borderColor: 'black',
           borderWidth: 1,
-          width: isGrid ? windowWidth / 2 : windowWidth,
+          width: isGrid ? windowWidth / 2.2 : windowWidth - 25,
           borderRadius: Math.round(moderateVerticalScale(30)),
+          marginHorizontal: Math.round(moderateScale(5)),
+          marginVertical: Math.round(moderateScale(5)),
         }}>
         <View
           style={{

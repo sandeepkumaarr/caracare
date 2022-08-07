@@ -2,6 +2,7 @@ export type Characters = {
   charactersList: Array<characterList>;
   characterListLoading: boolean;
   characterListResponseInfo: characterResponseInfo;
+  characterDetails: CharacterDetails;
 };
 
 export type FilterProps = 'Alive' | 'Dead' | 'unknown';
@@ -17,7 +18,7 @@ export type characterList = {
   status: string;
   species: string;
   type: string;
-  gender: 'Male';
+  gender: string;
   origin: origin;
   location: origin;
   image: string;
@@ -51,4 +52,9 @@ export type getcharactersParams = {
 
 export type State = {
   Characters: Characters;
+};
+
+export type CharacterDetails = {
+  character: characterList;
+  episode: Array<episode>;
 };

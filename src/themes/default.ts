@@ -164,7 +164,7 @@ const theme = createTheme({
       borderColor: 'buttonText',
       borderWidth: 1.5,
       borderRadius: Math.round(moderateVerticalScale(15)),
-      width: windowWidth / 2,
+      width: windowWidth / 2.3,
     },
   },
 });

@@ -21,6 +21,7 @@ import {
 import {SVGIcon} from '../components/SVGIcon';
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 import {FilterProps, State} from '../types/characters';
+import CharacterCardSkeleton from '../SkeletonPlaceholders/CharacterCardSkeleton';
 
 const CharactersListScreen = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -36,6 +37,10 @@ const CharactersListScreen = () => {
     (state: State) => state.Characters.charactersList,
   );
 
+  const charactersListLoading = useSelector(
+    (state: State) => state.Characters?.characterListLoading,
+  );
+
   useEffect(() => {
     dispatch(
       getCharacters({
@@ -46,6 +51,95 @@ const CharactersListScreen = () => {
       null;
     };
   }, []);
+
+  const ListHeaderItem = () => {
+    return (
+      <Box
+        flexDirection={'row'}
+        justifyContent="space-between"
+        alignItems={'center'}
+        marginTop={10}
+        paddingHorizontal={4}>
+        <Box>
+          <Text
+            variant={'buttonText'}
+            fontSize={Math.round(moderateScale(20))}
+            textAlign="left">
+            All Characters
+          </Text>
+        </Box>
+
+        <Box flexDirection={'row'} alignItems="center" zIndex={100}>
+          <Box alignItems={'center'} paddingRight={4} zIndex={100}>
+            <Dropdown
+              showDropdown={showDropdown}
+              setshowDropdown={setshowDropdown}
+              width={Math.round(moderateScale(80))}
+              zIndex={100}
+              children={
+                <>
+                  <TouchableOpacity
+                    style={styles.filterDropdownStyle}
+                    onPress={() => {
+                      setSelectedFilterItem('Alive');
+                      setshowDropdown(false);
+                    }}>
+                    <Text variant={'dropDownText'}>Alive</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.filterDropdownStyle}
+                    onPress={() => {
+                      setSelectedFilterItem('Dead');
+                      setshowDropdown(false);
+                    }}>
+                    <Text variant={'dropDownText'}>Dead</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.filterDropdownLastItem}
+                    onPress={() => {
+                      setSelectedFilterItem('unknown');
+                      setshowDropdown(false);
+                    }}>
+                    <Text variant={'dropDownText'}>unknown</Text>
+                  </TouchableOpacity>
+                </>
+              }
+            />
+          </Box>
+
+          <TouchableOpacity
+            onPress={() => {
+              if (toggle) {
+                setColumnNo(2);
+              } else {
+                setColumnNo(1);
+              }
+              settoggle(prev => !prev);
+            }}>
+            <ToggleItem
+              alignItems={'center'}
+              justifyContent={'center'}
+              toggleComponent={
+                <SVGIcon
+                  type={'grid'}
+                  height={`${moderateVerticalScale(40)}`}
+                  width={`${moderateScale(40)}`}
+                />
+              }
+              toggledComponent={
+                <SVGIcon
+                  type={'list'}
+                  height={`${moderateVerticalScale(40)}`}
+                  width={`${moderateScale(40)}`}
+                />
+              }
+              toggle={toggle}
+            />
+          </TouchableOpacity>
+        </Box>
+      </Box>
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -64,9 +158,13 @@ const CharactersListScreen = () => {
         contentContainerStyle={{
           marginHorizontal: Math.round(moderateVerticalScale(10)),
         }}
-        renderItem={({item}) => (
-          <CharacterCard character={item} isGrid={!toggle} />
-        )}
+        renderItem={({item}) => {
+          return charactersListLoading ? (
+            <CharacterCardSkeleton isGrid={!toggle} />
+          ) : (
+            <CharacterCard character={item} isGrid={!toggle} />
+          );
+        }}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id.toString()}
         ListFooterComponent={() => (
@@ -79,92 +177,7 @@ const CharactersListScreen = () => {
         stickyHeaderIndices={[0]}
         ListHeaderComponentStyle={styles.headerComponentStyle}
         ListHeaderComponent={() => {
-          return (
-            <Box
-              flexDirection={'row'}
-              justifyContent="space-between"
-              alignItems={'center'}
-              marginTop={10}
-              paddingHorizontal={4}>
-              <Box>
-                <Text
-                  variant={'buttonText'}
-                  fontSize={Math.round(moderateScale(20))}
-                  textAlign="left">
-                  All Characters
-                </Text>
-              </Box>
-
-              <Box flexDirection={'row'} alignItems="center" zIndex={100}>
-                <Box alignItems={'center'} paddingRight={4} zIndex={100}>
-                  <Dropdown
-                    showDropdown={showDropdown}
-                    setshowDropdown={setshowDropdown}
-                    width={Math.round(moderateScale(80))}
-                    zIndex={100}
-                    children={
-                      <>
-                        <TouchableOpacity
-                          style={styles.filterDropdownStyle}
-                          onPress={() => {
-                            setSelectedFilterItem('Alive');
-                            setshowDropdown(false);
-                          }}>
-                          <Text variant={'dropDownText'}>Alive</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                          style={styles.filterDropdownStyle}
-                          onPress={() => {
-                            setSelectedFilterItem('Dead');
-                            setshowDropdown(false);
-                          }}>
-                          <Text variant={'dropDownText'}>Dead</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                          style={styles.filterDropdownLastItem}
-                          onPress={() => {
-                            setSelectedFilterItem('unknown');
-                            setshowDropdown(false);
-                          }}>
-                          <Text variant={'dropDownText'}>unknown</Text>
-                        </TouchableOpacity>
-                      </>
-                    }
-                  />
-                </Box>
-
-                <TouchableOpacity
-                  onPress={() => {
-                    if (toggle) {
-                      setColumnNo(2);
-                    } else {
-                      setColumnNo(1);
-                    }
-                    settoggle(prev => !prev);
-                  }}>
-                  <ToggleItem
-                    alignItems={'center'}
-                    justifyContent={'center'}
-                    toggleComponent={
-                      <SVGIcon
-                        type={'grid'}
-                        height={`${moderateVerticalScale(40)}`}
-                        width={`${moderateScale(40)}`}
-                      />
-                    }
-                    toggledComponent={
-                      <SVGIcon
-                        type={'list'}
-                        height={`${moderateVerticalScale(40)}`}
-                        width={`${moderateScale(40)}`}
-                      />
-                    }
-                    toggle={toggle}
-                  />
-                </TouchableOpacity>
-              </Box>
-            </Box>
-          );
+          return <ListHeaderItem />;
         }}
       />
 

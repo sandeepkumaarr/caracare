@@ -3,8 +3,11 @@ import {
   characterList,
   characterResponseInfo,
   Characters,
+  CharacterDetails,
 } from '../../types/characters';
 import {getCharacters} from '../actions/CharacterActions';
+import * as RootNavigation from '../../navigation/RootNavigation';
+import routes from '../../navigation/routes';
 
 export const CharactersInitialState: Characters = {
   charactersList: [],
@@ -15,12 +18,49 @@ export const CharactersInitialState: Characters = {
     next: '',
     prev: '',
   },
+  characterDetails: {
+    character: {
+      id: 0,
+      name: '',
+      status: '',
+      species: '',
+      type: '',
+      gender: '',
+      origin: {
+        name: '',
+        url: '',
+      },
+      location: {
+        name: '',
+        url: '',
+      },
+      image: '',
+      episode: [],
+      url: '',
+      created: '',
+    },
+    episode: [],
+  },
 };
 
 export const CharactersSlice = createSlice({
   name: 'characters',
   initialState: CharactersInitialState,
-  reducers: {},
+  reducers: {
+    setCharacterDetails: (
+      state: {characterDetails: CharacterDetails},
+      {payload}: PayloadAction<CharacterDetails>,
+    ) => {
+      state.characterDetails = payload;
+
+      setTimeout(() => {
+        RootNavigation.navigate(
+          routes.CHARACTER_DETAILS_SCREEN as never,
+          {} as never,
+        );
+      }, 100);
+    },
+  },
   extraReducers: builder => {
     builder.addCase(getCharacters.pending, (state, {payload}) => {
       state.characterListLoading = true;
@@ -67,4 +107,5 @@ export const CharactersSlice = createSlice({
   },
 });
 
-export const {} = CharactersSlice.actions;
+export const {setCharacterDetails: setCharacterDetailsActionCreator} =
+  CharactersSlice.actions;
