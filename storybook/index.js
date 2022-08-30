@@ -7,7 +7,7 @@ import {withKnobs} from '@storybook/addon-knobs';
 import {ThemeProvider} from '@shopify/restyle';
 import {Provider} from 'react-redux';
 
-import store from '../src/redux/store';
+import {store} from '../src/redux/store';
 import './rn-addons';
 import {loadStories} from './storyLoader';
 import theme from '../src/themes/default';

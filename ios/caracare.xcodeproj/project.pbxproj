@@ -13,6 +13,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		15045B15B9444579BF370962 /* SF-Pro-Text-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 21FC4D023D5E4094B4219B2C /* SF-Pro-Text-BlackItalic.otf */; };
+		1E83AF60BF58009D691BDEC8 /* libPods-caracare-caracareTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A530824ECA2830D3BDAE778 /* libPods-caracare-caracareTests.a */; };
 		21211AC545154C1DAF0218D3 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77B3FE0E9B814B4A9808A126 /* SF-Pro-Text-Semibold.otf */; };
 		28493D2BEC2E40EBB5162A9F /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2586CCDC34694CFD97D32D6D /* SF-Pro-Text-MediumItalic.otf */; };
 		2F8DC228BBFC4EEA9B022BC2 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8623FDF5770849A6BF80891F /* SF-Pro-Text-Bold.otf */; };
@@ -20,17 +21,16 @@
 		3B87F35A4D1D457FAFDCAD1C /* SF-Pro-Text-UltralightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AAAEE6A304CE46FA8285D305 /* SF-Pro-Text-UltralightItalic.otf */; };
 		527A975AF74C42EAA5004ACB /* SF-Pro-Text-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8B26DA0B816D42C6AA54B2D9 /* SF-Pro-Text-HeavyItalic.otf */; };
 		56A073F13C064F6A9B3FC48C /* SF-Pro-Text-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43C123784B3E4F24917B099B /* SF-Pro-Text-Thin.otf */; };
+		5C14219340B56BEF2257D05E /* libPods-caracare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5294BBCCF23C84D33815EABB /* libPods-caracare.a */; };
 		64EC8128FEBC4DEE8FC4BB55 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 12FAE4108E864C9EB4F6BA7B /* SF-Pro-Text-Medium.otf */; };
 		75F9C20999C8415A81520097 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F1D7B4FEADC42ECB3C8ACB7 /* SF-Pro-Text-Regular.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		853F538DF91047A3A280760B /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = FAE401BFD1D04DFCA251511B /* SF-Pro-Text-Light.otf */; };
-		9051B5111144ACE8E825B518 /* libPods-caracare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E248519865B95D2DBB08B6E4 /* libPods-caracare.a */; };
 		9E72063BDAF14A779E9557D6 /* SF-Pro-Text-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = CCAEFF93B5A2476BA9578A11 /* SF-Pro-Text-Black.otf */; };
 		A4882CAB542046E0AD7B1960 /* SF-Pro-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C176D01C63EA4AC7864FBFE5 /* SF-Pro-Text-SemiboldItalic.otf */; };
 		A722AF6633FD45C69A1451CA /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF888C702083491380ABC809 /* SF-Pro-Text-Heavy.otf */; };
 		B3762F581C174E39BF6C94F0 /* SF-Pro-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08775373B7A74643990F4BFF /* SF-Pro-Text-RegularItalic.otf */; };
 		C7C21915E971465B8E453EAA /* SF-Pro-Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03B3E196F3094930AF050723 /* SF-Pro-Text-LightItalic.otf */; };
-		E1CC36A4297FF107A000A677 /* libPods-caracare-caracareTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B24AA01D7982A8874DC977EE /* libPods-caracare-caracareTests.a */; };
 		F0434E722054405F971BA5E7 /* SF-Pro-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5EAF41451A994FBA8A086BF0 /* SF-Pro-Text-BoldItalic.otf */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +49,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* caracareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = caracareTests.m; sourceTree = "<group>"; };
 		03B3E196F3094930AF050723 /* SF-Pro-Text-LightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-LightItalic.otf"; path = "../src/assets/fonts/SF-Pro-Text-LightItalic.otf"; sourceTree = "<group>"; };
+		04D31BB6B59582DBF3660EA9 /* Pods-caracare-caracareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caracare-caracareTests.release.xcconfig"; path = "Target Support Files/Pods-caracare-caracareTests/Pods-caracare-caracareTests.release.xcconfig"; sourceTree = "<group>"; };
 		08775373B7A74643990F4BFF /* SF-Pro-Text-RegularItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-RegularItalic.otf"; path = "../src/assets/fonts/SF-Pro-Text-RegularItalic.otf"; sourceTree = "<group>"; };
 		12FAE4108E864C9EB4F6BA7B /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-Medium.otf"; path = "../src/assets/fonts/SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* caracare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = caracare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,27 +58,26 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = caracare/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = caracare/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = caracare/main.m; sourceTree = "<group>"; };
+		1A530824ECA2830D3BDAE778 /* libPods-caracare-caracareTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-caracare-caracareTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FC4D023D5E4094B4219B2C /* SF-Pro-Text-BlackItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-BlackItalic.otf"; path = "../src/assets/fonts/SF-Pro-Text-BlackItalic.otf"; sourceTree = "<group>"; };
 		2586CCDC34694CFD97D32D6D /* SF-Pro-Text-MediumItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-MediumItalic.otf"; path = "../src/assets/fonts/SF-Pro-Text-MediumItalic.otf"; sourceTree = "<group>"; };
-		25B960400E4355B7AFF9E04C /* Pods-caracare-caracareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caracare-caracareTests.release.xcconfig"; path = "Target Support Files/Pods-caracare-caracareTests/Pods-caracare-caracareTests.release.xcconfig"; sourceTree = "<group>"; };
+		2A00DC4B50C0F9020EBC6EA0 /* Pods-caracare-caracareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caracare-caracareTests.debug.xcconfig"; path = "Target Support Files/Pods-caracare-caracareTests/Pods-caracare-caracareTests.debug.xcconfig"; sourceTree = "<group>"; };
 		370F932B8E674805A9A2E913 /* SF-Pro-Text-Ultralight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-Ultralight.otf"; path = "../src/assets/fonts/SF-Pro-Text-Ultralight.otf"; sourceTree = "<group>"; };
 		43C123784B3E4F24917B099B /* SF-Pro-Text-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-Thin.otf"; path = "../src/assets/fonts/SF-Pro-Text-Thin.otf"; sourceTree = "<group>"; };
 		4F1D7B4FEADC42ECB3C8ACB7 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-Regular.otf"; path = "../src/assets/fonts/SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		5294BBCCF23C84D33815EABB /* libPods-caracare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-caracare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EAF41451A994FBA8A086BF0 /* SF-Pro-Text-BoldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-BoldItalic.otf"; path = "../src/assets/fonts/SF-Pro-Text-BoldItalic.otf"; sourceTree = "<group>"; };
 		77B3FE0E9B814B4A9808A126 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-Semibold.otf"; path = "../src/assets/fonts/SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = caracare/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8623FDF5770849A6BF80891F /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-Bold.otf"; path = "../src/assets/fonts/SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
-		88EF3BF5C3E4D521E32A5AEF /* Pods-caracare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caracare.release.xcconfig"; path = "Target Support Files/Pods-caracare/Pods-caracare.release.xcconfig"; sourceTree = "<group>"; };
-		89CD1434AE1A9A15C844128B /* Pods-caracare-caracareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caracare-caracareTests.debug.xcconfig"; path = "Target Support Files/Pods-caracare-caracareTests/Pods-caracare-caracareTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B26DA0B816D42C6AA54B2D9 /* SF-Pro-Text-HeavyItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-HeavyItalic.otf"; path = "../src/assets/fonts/SF-Pro-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
+		8D926508D19E3849577BC346 /* Pods-caracare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caracare.debug.xcconfig"; path = "Target Support Files/Pods-caracare/Pods-caracare.debug.xcconfig"; sourceTree = "<group>"; };
 		AAAEE6A304CE46FA8285D305 /* SF-Pro-Text-UltralightItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-UltralightItalic.otf"; path = "../src/assets/fonts/SF-Pro-Text-UltralightItalic.otf"; sourceTree = "<group>"; };
-		B24AA01D7982A8874DC977EE /* libPods-caracare-caracareTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-caracare-caracareTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC4718B7E44347D215C6B2C4 /* Pods-caracare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caracare.release.xcconfig"; path = "Target Support Files/Pods-caracare/Pods-caracare.release.xcconfig"; sourceTree = "<group>"; };
 		BF888C702083491380ABC809 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-Heavy.otf"; path = "../src/assets/fonts/SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
 		C176D01C63EA4AC7864FBFE5 /* SF-Pro-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-SemiboldItalic.otf"; path = "../src/assets/fonts/SF-Pro-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		CCAEFF93B5A2476BA9578A11 /* SF-Pro-Text-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-Black.otf"; path = "../src/assets/fonts/SF-Pro-Text-Black.otf"; sourceTree = "<group>"; };
-		E248519865B95D2DBB08B6E4 /* libPods-caracare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-caracare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F1E7AF975DC3E924760CC234 /* Pods-caracare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caracare.debug.xcconfig"; path = "Target Support Files/Pods-caracare/Pods-caracare.debug.xcconfig"; sourceTree = "<group>"; };
 		F65FD2B73BC14F53AD3541F0 /* SF-Pro-Text-ThinItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-ThinItalic.otf"; path = "../src/assets/fonts/SF-Pro-Text-ThinItalic.otf"; sourceTree = "<group>"; };
 		FAE401BFD1D04DFCA251511B /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-Light.otf"; path = "../src/assets/fonts/SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1CC36A4297FF107A000A677 /* libPods-caracare-caracareTests.a in Frameworks */,
+				1E83AF60BF58009D691BDEC8 /* libPods-caracare-caracareTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9051B5111144ACE8E825B518 /* libPods-caracare.a in Frameworks */,
+				5C14219340B56BEF2257D05E /* libPods-caracare.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,8 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				E248519865B95D2DBB08B6E4 /* libPods-caracare.a */,
-				B24AA01D7982A8874DC977EE /* libPods-caracare-caracareTests.a */,
+				5294BBCCF23C84D33815EABB /* libPods-caracare.a */,
+				1A530824ECA2830D3BDAE778 /* libPods-caracare-caracareTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -202,10 +202,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F1E7AF975DC3E924760CC234 /* Pods-caracare.debug.xcconfig */,
-				88EF3BF5C3E4D521E32A5AEF /* Pods-caracare.release.xcconfig */,
-				89CD1434AE1A9A15C844128B /* Pods-caracare-caracareTests.debug.xcconfig */,
-				25B960400E4355B7AFF9E04C /* Pods-caracare-caracareTests.release.xcconfig */,
+				8D926508D19E3849577BC346 /* Pods-caracare.debug.xcconfig */,
+				AC4718B7E44347D215C6B2C4 /* Pods-caracare.release.xcconfig */,
+				2A00DC4B50C0F9020EBC6EA0 /* Pods-caracare-caracareTests.debug.xcconfig */,
+				04D31BB6B59582DBF3660EA9 /* Pods-caracare-caracareTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -217,11 +217,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "caracareTests" */;
 			buildPhases = (
-				2BDCC64796796BE2F429227F /* [CP] Check Pods Manifest.lock */,
+				C1BB5F3F324EB9200B897141 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				72D4552E93F4D2D20BEB7AD4 /* [CP] Copy Pods Resources */,
+				BD0A27488B400E1842AD29AE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -237,13 +237,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "caracare" */;
 			buildPhases = (
-				B78CCC31D63DB639743DD9AE /* [CP] Check Pods Manifest.lock */,
+				EAE5A11166F7AA667292A869 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				7B7775A2598ADDCA06D1247F /* [CP] Copy Pods Resources */,
+				422F6C3BF1F27D182368EE9C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -344,7 +344,41 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		2BDCC64796796BE2F429227F /* [CP] Check Pods Manifest.lock */ = {
+		422F6C3BF1F27D182368EE9C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-caracare/Pods-caracare-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-caracare/Pods-caracare-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-caracare/Pods-caracare-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD0A27488B400E1842AD29AE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-caracare-caracareTests/Pods-caracare-caracareTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-caracare-caracareTests/Pods-caracare-caracareTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-caracare-caracareTests/Pods-caracare-caracareTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1BB5F3F324EB9200B897141 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -366,41 +400,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		72D4552E93F4D2D20BEB7AD4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-caracare-caracareTests/Pods-caracare-caracareTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-caracare-caracareTests/Pods-caracare-caracareTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-caracare-caracareTests/Pods-caracare-caracareTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7B7775A2598ADDCA06D1247F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-caracare/Pods-caracare-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-caracare/Pods-caracare-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-caracare/Pods-caracare-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B78CCC31D63DB639743DD9AE /* [CP] Check Pods Manifest.lock */ = {
+		EAE5A11166F7AA667292A869 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -474,7 +474,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89CD1434AE1A9A15C844128B /* Pods-caracare-caracareTests.debug.xcconfig */;
+			baseConfigurationReference = 2A00DC4B50C0F9020EBC6EA0 /* Pods-caracare-caracareTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -501,7 +501,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25B960400E4355B7AFF9E04C /* Pods-caracare-caracareTests.release.xcconfig */;
+			baseConfigurationReference = 04D31BB6B59582DBF3660EA9 /* Pods-caracare-caracareTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -525,7 +525,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1E7AF975DC3E924760CC234 /* Pods-caracare.debug.xcconfig */;
+			baseConfigurationReference = 8D926508D19E3849577BC346 /* Pods-caracare.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -552,7 +552,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88EF3BF5C3E4D521E32A5AEF /* Pods-caracare.release.xcconfig */;
+			baseConfigurationReference = AC4718B7E44347D215C6B2C4 /* Pods-caracare.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
